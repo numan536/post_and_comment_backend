@@ -65,6 +65,19 @@ app.get('/posts', async (req, res) => {
   return res.json(posts.map(post => post.toJSON()));
 });
 
+app.get('/posts/singlePost/:id', async (req, res) => {
+  //  const auth = req.user;
+  //  if (auth) {
+  let post = await Post.findById(req.params.id).populate('user','id name _id email').populate('comments.user','id name _id email');
+  //if (post?.user?.toString() !== auth?.id?.toString())
+  //  return res.status(401).send('Not authorized');
+  post = post.toJSON();
+  // req.io.emit("SINGLE_POST", post);
+  return res.json(post);
+  //  }
+  //  return res.status(401).send('Not authorized');
+});
+
 app.use('/posts', authorize, postsRouter);
 
 //app.use('/collections', collectionsRouter);
