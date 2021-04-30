@@ -41,8 +41,7 @@ app.use(function (req, res, next) {
 
 mongoose
   .connect(
-    'mongodb://localhost:27017/community?retryWrites=true&w=majority',
-
+    'mongodb+srv://Nouman:bhatti@12345@testing.fevcr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
